@@ -25,35 +25,42 @@ void leLinha(char* nomearq, char* linha) {
 }
 
 int getJogadas(char* linha, int *arrayJogadas) {
-	int i, j;
+	int i, qteJogadas;
 	char jogada[3];
-	jogada[2] = '\0';
+//	jogada[2] = '\0';
 	int jogadaI;
 
-	j = 0;
+	qteJogadas = 0;
 
+	// começa no caractere 3 pra ignorar o '1: '
 	for(i = 3; linha[i] != '\0'; i++){
+
 		jogada[0] = linha[i];
+
 		if(jogada[0] != ' ' && jogada[0] != ',' ){
+
+			// se for um strike (só pode ser 0...)
 			if (linha[i+1] == '0') {
 				jogada[1]='0';
-				i++;
+				i++; // consome o zero no for
+
 			} else {
 				jogada[1]='\0';
 			}
+
 			jogadaI = atoi(jogada);
-			arrayJogadas[j++] = jogadaI;
+			arrayJogadas[qteJogadas++] = jogadaI;
 		}
 	}
 
-	return j;
+	return qteJogadas;
 }
 
 int calcularResultado(char *linha) {
 	int i, j;
 	int resultado = 0;
 
-	int arrayJogadas[4];
+	int arrayJogadas[21];
 
 	j = getJogadas(linha,arrayJogadas);
 

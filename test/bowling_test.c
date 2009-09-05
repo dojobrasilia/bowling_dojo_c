@@ -34,3 +34,14 @@ void TesteCalcularUmDezSemSacanagemDoStrike(CuTest *tc) {
 	char* jogada = "1: 10, 0 0";
 	CuAssertIntEquals(tc,10,calcularResultado(jogada));
 }
+
+void TesteCalcularDezFramesZerados(CuTest *tc) {
+	char* jogada = "1: 10, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0";
+	CuAssertIntEquals(tc,10,calcularResultado(jogada));
+}
+
+void TesteCalcularVinteEUmaBolas(CuTest *tc) {
+	char* jogada = "1: 9 1, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 9 1 0";
+	CuAssertIntEquals(tc,20,calcularResultado(jogada));
+}
+

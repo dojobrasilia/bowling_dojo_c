@@ -17,6 +17,8 @@ void RunAllTests(void) {
     SUITE_ADD_TEST(suite, TesteCalcularUmaJogada);
     SUITE_ADD_TEST(suite, TesteCalcularDuasJogadas);
     SUITE_ADD_TEST(suite, TesteCalcularUmDezSemSacanagemDoStrike);
+    SUITE_ADD_TEST(suite, TesteCalcularDezFramesZerados);
+    SUITE_ADD_TEST(suite, TesteCalcularVinteEUmaBolas);
 
     CuSuiteRun(suite);
     CuSuiteSummary(suite, output);
