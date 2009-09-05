@@ -23,5 +23,6 @@ void TesteNaoConsideraLixoFimArrayDepoisDeSpare(CuTest *tc);
 void TesteCalcularSpareDuplo(CuTest *tc);
 void TesteCalcularFalsoSpare(CuTest *tc);
 void TesteCalcularFrameIncompleto(CuTest *tc);
+void TesteCalcularSpareTriplo(CuTest *tc);
 
 #endif /* BOWLING_TEST_H_ */

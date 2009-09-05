@@ -93,7 +93,17 @@ void TesteCalcularFrameIncompleto(CuTest *tc) {
 	CuAssertIntEquals(tc,-1,calcularResultado(jogada));
 }
 
+void TesteCalcularSpareTriplo(CuTest *tc) {
+	char* jogada = "1: 9 1, 5 5, 1 9, 2 0";
+	//				   15   11   12   2
 
+	CuAssertIntEquals(tc,40,calcularResultado(jogada));
+}
+
+// TODO
+// - strike
+// - strikes encadeados
+// - ultimo frame de 3 bolas
 
 
 
