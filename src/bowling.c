@@ -61,44 +61,44 @@ int getJogadas(char* linha, int *arrayJogadas) {
 	return qteJogadas;
 }
 
-int calcularResultadoInteiros(int* arrayJogadas, int tamanho) {
-	int i, frame=0;
+int calcularResultadoInteiros(int* arrayJogadas, int qtdBolas) {
+	int frame;
 	int resultado = 0;
 
-    for(i = 0; i < tamanho; i++){
-    	frame ++;
+	int qtdFrames = qtdBolas/2 + qtdBolas%2;
+
+    for(frame = 0; frame < qtdFrames; frame++){
+
+    	int indiceBola1 = frame*2;
 
     	//terceira bola do ultimo frame
-    	if (frame == 11) {
+    	if (frame == 10) {
     		return resultado;
     	}
 
     	//verifica se o frame esta completo
-        if((i+1 < tamanho)) {
+        if((indiceBola1+1 < qtdBolas)) {
 
         	//detecta o spare
-        	if (arrayJogadas[i] + arrayJogadas[i + 1] == 10) {
+        	if (arrayJogadas[indiceBola1] + arrayJogadas[indiceBola1 + 1] == 10) {
 
         		//se existe uma bola depois do spare
-				if (i+2 >= tamanho) {
+				if (indiceBola1+2 >= qtdBolas) {
 
 					//caso nao consiga calcular
 					return -1;
 
 				//calculo do spare
 				} else {
-					resultado += arrayJogadas[i] + arrayJogadas[i + 1] + arrayJogadas[i + 2];
+					resultado += arrayJogadas[indiceBola1] + arrayJogadas[indiceBola1 + 1] + arrayJogadas[indiceBola1 + 2];
 
 				}
         	//jogada normal, frame completo
         	} else {
-        		resultado += arrayJogadas[i];
-        		resultado += arrayJogadas[i+1];
+        		resultado += arrayJogadas[indiceBola1];
+        		resultado += arrayJogadas[indiceBola1+1];
 
         	}
-
-        	//esta consumindo o frame completo
-        	i++;
 
         //frame incompleto, nao consegue calcular
         } else {
