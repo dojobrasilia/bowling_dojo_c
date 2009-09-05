@@ -104,7 +104,8 @@ void TesteCalcularSpareTriplo(CuTest *tc) {
 // - strike
 // - strikes encadeados
 // - ultimo frame de 3 bolas
-
+// 		- completa strikes com zeros no œltimo frame?
+// - jogo perfeito
 
 
 
