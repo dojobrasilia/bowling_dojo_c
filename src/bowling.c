@@ -49,7 +49,12 @@ int getJogadas(char* linha, int *arrayJogadas) {
 			}
 
 			jogadaI = atoi(jogada);
+
 			arrayJogadas[qteJogadas++] = jogadaI;
+			if (jogadaI == 10) {
+				// completa com zeros pra ficar sempre 2 bolas por frame.
+				arrayJogadas[qteJogadas++] = 0;
+			}
 		}
 	}
 
@@ -57,18 +62,11 @@ int getJogadas(char* linha, int *arrayJogadas) {
 }
 
 int calcularResultadoInteiros(int* arrayJogadas, int tamanho) {
-	int i, frame = 0;
+	int i, frame=0;
 	int resultado = 0;
 
     for(i = 0; i < tamanho; i++){
-    	frame++;
-
-    	//strike
-    	if (arrayJogadas[i] == 10) {
-    		resultado += arrayJogadas[i];
-    		continue;
-
-    	}
+    	frame ++;
 
     	//terceira bola do ultimo frame
     	if (frame == 11) {
