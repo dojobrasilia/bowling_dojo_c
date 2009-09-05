@@ -19,6 +19,12 @@ void RunAllTests(void) {
     SUITE_ADD_TEST(suite, TesteCalcularUmDezSemSacanagemDoStrike);
     SUITE_ADD_TEST(suite, TesteCalcularDezFramesZerados);
     SUITE_ADD_TEST(suite, TesteCalcularVinteEUmaBolas);
+    SUITE_ADD_TEST(suite, TesteCalcularVinteJogadas);
+    SUITE_ADD_TEST(suite, TesteCalcularVinteUmaJogadasComStrikeFinal);
+    SUITE_ADD_TEST(suite, TesteCalcularSpareSimples);
+    SUITE_ADD_TEST(suite, TesteNaoConsideraLixoFimArray);
+    SUITE_ADD_TEST(suite, TesteNaoConsideraLixoFimArrayDepoisDeSpare);
+
 
     CuSuiteRun(suite);
     CuSuiteSummary(suite, output);

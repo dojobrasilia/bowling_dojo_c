@@ -56,17 +56,47 @@ int getJogadas(char* linha, int *arrayJogadas) {
 	return qteJogadas;
 }
 
-int calcularResultado(char *linha) {
-	int i, j;
+int calcularResultadoInteiros(int* arrayJogadas, int tamanho) {
+	int i;
 	int resultado = 0;
 
+    for(i = 0;i < tamanho;i++){
+        if(i+1 < tamanho && (arrayJogadas[i] + arrayJogadas[i + 1] == 10)){
+        	if (i+2 >= tamanho) {
+        		return -1;
+
+        	} else {
+        		resultado += arrayJogadas[i] + arrayJogadas[i + 1] + arrayJogadas[i + 2];
+        		i++;
+
+        	}
+        } else {
+            resultado += arrayJogadas[i];
+
+        }
+    }
+
+    return resultado;
+}
+
+int calcularResultado(char *linha) {
 	int arrayJogadas[21];
 
-	j = getJogadas(linha,arrayJogadas);
+	int tamanho = getJogadas(linha,arrayJogadas);
 
-	for (i = 0; i < j; i++) {
-		resultado += arrayJogadas[i];
-	}
-
-	return resultado;
+    return calcularResultadoInteiros(arrayJogadas, tamanho);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

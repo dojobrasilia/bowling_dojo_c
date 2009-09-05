@@ -15,5 +15,10 @@ void TesteCalcularDuasJogadas(CuTest *tc);
 void TesteCalcularUmDezSemSacanagemDoStrike(CuTest *tc);
 void TesteCalcularDezFramesZerados(CuTest *tc);
 void TesteCalcularVinteEUmaBolas(CuTest *tc);
+void TesteCalcularVinteJogadas(CuTest *tc);
+void TesteCalcularVinteUmaJogadasComStrikeFinal(CuTest *tc);
+void TesteCalcularSpareSimples(CuTest *tc);
+void TesteNaoConsideraLixoFimArray(CuTest *tc);
+void TesteNaoConsideraLixoFimArrayDepoisDeSpare(CuTest *tc);
 
 #endif /* BOWLING_TEST_H_ */
