@@ -20,5 +20,8 @@ void TesteCalcularVinteUmaJogadasComStrikeFinal(CuTest *tc);
 void TesteCalcularSpareSimples(CuTest *tc);
 void TesteNaoConsideraLixoFimArray(CuTest *tc);
 void TesteNaoConsideraLixoFimArrayDepoisDeSpare(CuTest *tc);
+void TesteCalcularSpareDuplo(CuTest *tc);
+void TesteCalcularFalsoSpare(CuTest *tc);
+void TesteCalcularFrameIncompleto(CuTest *tc);
 
 #endif /* BOWLING_TEST_H_ */

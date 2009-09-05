@@ -24,6 +24,9 @@ void RunAllTests(void) {
     SUITE_ADD_TEST(suite, TesteCalcularSpareSimples);
     SUITE_ADD_TEST(suite, TesteNaoConsideraLixoFimArray);
     SUITE_ADD_TEST(suite, TesteNaoConsideraLixoFimArrayDepoisDeSpare);
+    SUITE_ADD_TEST(suite, TesteCalcularSpareDuplo);
+    SUITE_ADD_TEST(suite, TesteCalcularFalsoSpare);
+    SUITE_ADD_TEST(suite, TesteCalcularFrameIncompleto);
 
 
     CuSuiteRun(suite);

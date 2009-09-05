@@ -37,8 +37,8 @@ void TesteCalcularUmDezSemSacanagemDoStrike(CuTest *tc) {
 }
 
 void TesteCalcularDezFramesZerados(CuTest *tc) {
-	char* jogada = "1: 10, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0";
-	CuAssertIntEquals(tc,10,calcularResultado(jogada));
+	char* jogada = "1: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0";
+	CuAssertIntEquals(tc,0,calcularResultado(jogada));
 }
 
 void TesteCalcularVinteEUmaBolas(CuTest *tc) {
@@ -77,6 +77,23 @@ void TesteNaoConsideraLixoFimArrayDepoisDeSpare(CuTest *tc) {
 	//Nao consegue calcular pois falta a quinta bola devido ao spare, retorna -1
 	CuAssertIntEquals(tc,-1,calcularResultadoInteiros(arrayJogadas,qtdJogadas));
 }
+
+void TesteCalcularSpareDuplo(CuTest *tc) {
+	char* jogada = "1: 9 1, 5 5, 1 0";
+	CuAssertIntEquals(tc,27,calcularResultado(jogada));
+}
+
+void TesteCalcularFalsoSpare(CuTest *tc) {
+	char* jogada = "1: 1 5, 5 1";
+	CuAssertIntEquals(tc,12,calcularResultado(jogada));
+}
+
+void TesteCalcularFrameIncompleto(CuTest *tc) {
+	char* jogada = "1: 1 5, 5";
+	CuAssertIntEquals(tc,-1,calcularResultado(jogada));
+}
+
+
 
 
 
