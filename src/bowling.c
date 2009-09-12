@@ -61,6 +61,38 @@ int getJogadas(char* linha, int *arrayJogadas) {
 	return qteJogadas;
 }
 
+int isPossivelCalcular(int *arrayJogadas, int indiceBola1, int qtdBolas, int essaBola,
+					  int *proximaBola, int *proximaProximaBola) {
+
+	if (indiceBola1 + 1 >= qtdBolas) {
+		return 0;
+	}
+
+	if(essaBola == 10){
+
+		if (indiceBola1 + 2 >= qtdBolas) {
+			return 0;
+		} else {
+			*proximaBola = arrayJogadas[indiceBola1 + 2];
+		}
+
+		if(*proximaBola == 10){
+
+			if (indiceBola1 + 4 >= qtdBolas) {
+				return 0;
+			} else {
+				*proximaProximaBola = arrayJogadas[indiceBola1 + 4];
+			}
+
+		}else{
+			*proximaProximaBola = arrayJogadas[indiceBola1 + 3];
+		}
+	} else  if (essaBola + *proximaBola == 10 && indiceBola1+2 >= qtdBolas){
+		return 0;
+	}
+	return 1;
+}
+
 int calcularResultadoInteiros(int* arrayJogadas, int qtdBolas) {
 	int frame;
 	int resultado = 0;
@@ -75,30 +107,9 @@ int calcularResultadoInteiros(int* arrayJogadas, int qtdBolas) {
 		int proximaBola = arrayJogadas[indiceBola1 + 1];
 		int proximaProximaBola = arrayJogadas[indiceBola1 + 2];
 
-		if (indiceBola1 + 1 >= qtdBolas) {
-			return -1;
-		}
+		if (!isPossivelCalcular(arrayJogadas, indiceBola1, qtdBolas, essaBola,
+								&proximaBola, &proximaProximaBola)) {
 
-		if(essaBola == 10){
-
-			if (indiceBola1 + 2 >= qtdBolas) {
-				return -1;
-			} else {
-				proximaBola = arrayJogadas[indiceBola1 + 2];
-			}
-
-			if(proximaBola == 10){
-
-				if (indiceBola1 + 4 >= qtdBolas) {
-					return -1;
-				} else {
-					proximaProximaBola = arrayJogadas[indiceBola1 + 4];
-				}
-
-			}else{
-				proximaProximaBola = arrayJogadas[indiceBola1 + 3];
-			}
-		} else  if (essaBola + proximaBola == 10 && indiceBola1+2 >= qtdBolas){
 			return -1;
 		}
 
