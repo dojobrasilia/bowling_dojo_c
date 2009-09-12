@@ -28,7 +28,9 @@ void RunAllTests(void) {
     SUITE_ADD_TEST(suite, TesteCalcularFalsoSpare);
     SUITE_ADD_TEST(suite, TesteCalcularFrameIncompleto);
     SUITE_ADD_TEST(suite, TesteCalcularSpareTriplo);
-
+    SUITE_ADD_TEST(suite, TesteCalcularStrikeIncompleto);
+    SUITE_ADD_TEST(suite, TesteCalcularStrikeIncompleto2);
+    SUITE_ADD_TEST(suite, TesteCalcularStrikeSimples);
 
     CuSuiteRun(suite);
     CuSuiteSummary(suite, output);

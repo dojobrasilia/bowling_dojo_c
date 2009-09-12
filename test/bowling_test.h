@@ -24,5 +24,8 @@ void TesteCalcularSpareDuplo(CuTest *tc);
 void TesteCalcularFalsoSpare(CuTest *tc);
 void TesteCalcularFrameIncompleto(CuTest *tc);
 void TesteCalcularSpareTriplo(CuTest *tc);
+void TesteCalcularStrikeIncompleto(CuTest *tc);
+void TesteCalcularStrikeIncompleto2(CuTest *tc);
+void TesteCalcularStrikeSimples(CuTest *tc);
 
 #endif /* BOWLING_TEST_H_ */

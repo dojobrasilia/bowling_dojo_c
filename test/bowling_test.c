@@ -100,6 +100,21 @@ void TesteCalcularSpareTriplo(CuTest *tc) {
 	CuAssertIntEquals(tc,40,calcularResultado(jogada));
 }
 
+void TesteCalcularStrikeIncompleto(CuTest *tc) {
+	char* jogada = "1: 10";
+	CuAssertIntEquals(tc,-1,calcularResultado(jogada));
+}
+
+void TesteCalcularStrikeIncompleto2(CuTest *tc) {
+	char* jogada = "1: 10, 1";
+	CuAssertIntEquals(tc,-1,calcularResultado(jogada));
+}
+
+void TesteCalcularStrikeSimples(CuTest *tc) {
+	char* jogada = "1: 10, 1 2";
+	CuAssertIntEquals(tc,16,calcularResultado(jogada));
+}
+
 // TODO
 // - strike
 // - strikes encadeados

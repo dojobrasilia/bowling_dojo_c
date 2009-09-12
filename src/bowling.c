@@ -15,7 +15,7 @@ void leLinha(char* nomearq, char* linha) {
 
 	fread(&c, 1, 1, arquivoEntrada);
 
-	for(i=0; c != '\n' ;i++) {
+	for (i = 0; c != '\n'; i++) {
 		linha[i] = c;
 		fread(&c, 1, 1, arquivoEntrada);
 	}
@@ -27,31 +27,31 @@ void leLinha(char* nomearq, char* linha) {
 int getJogadas(char* linha, int *arrayJogadas) {
 	int i, qteJogadas;
 	char jogada[3];
-//	jogada[2] = '\0';
+	//	jogada[2] = '\0';
 	int jogadaI;
 
 	qteJogadas = 0;
 
 	// começa no caractere 3 pra ignorar o '1: '
-	for(i = 3; linha[i] != '\0'; i++){
+	for (i = 3; linha[i] != '\0'; i++) {
 
 		jogada[0] = linha[i];
 
-		if(jogada[0] != ' ' && jogada[0] != ',' ){
+		if (jogada[0] != ' ' && jogada[0] != ',') {
 
 			// se for um strike (só pode ser 0...)
-			if (linha[i+1] == '0') {
-				jogada[1]='0';
+			if (linha[i + 1] == '0') {
+				jogada[1] = '0';
 				i++; // consome o zero no for
 
 			} else {
-				jogada[1]='\0';
+				jogada[1] = '\0';
 			}
 
 			jogadaI = atoi(jogada);
 
 			arrayJogadas[qteJogadas++] = jogadaI;
-			if (jogadaI == 10) {
+			if (jogadaI == 10 && qteJogadas <= 20) {
 				// completa com zeros pra ficar sempre 2 bolas por frame.
 				arrayJogadas[qteJogadas++] = 0;
 			}
@@ -65,69 +65,75 @@ int calcularResultadoInteiros(int* arrayJogadas, int qtdBolas) {
 	int frame;
 	int resultado = 0;
 
-	int qtdFrames = qtdBolas/2 + qtdBolas%2;
+	int qtdFrames = qtdBolas / 2 + qtdBolas % 2;
 
-    for(frame = 0; frame < qtdFrames; frame++){
+	for (frame = 0; frame < qtdFrames; frame++) {
 
-    	int indiceBola1 = frame*2;
+		int indiceBola1 = frame * 2;
 
-    	//terceira bola do ultimo frame
-    	if (frame == 10) {
-    		return resultado;
-    	}
+		//terceira bola do ultimo frame
+		if (frame == 9) {
+			return resultado + arrayJogadas[indiceBola1] + arrayJogadas[indiceBola1+1];
+		}
 
-    	//verifica se o frame esta completo
-        if((indiceBola1+1 < qtdBolas)) {
+		//verifica se o frame esta completo
+		if ((indiceBola1 + 1 < qtdBolas)) {
 
-        	//detecta o spare
-        	if (arrayJogadas[indiceBola1] + arrayJogadas[indiceBola1 + 1] == 10) {
+			if (arrayJogadas[indiceBola1] == 10) {
 
-        		//se existe uma bola depois do spare
-				if (indiceBola1+2 >= qtdBolas) {
+				//se existe duas bola depois do strike
+				if (indiceBola1 + 3 >= qtdBolas) {
 
 					//caso nao consiga calcular
 					return -1;
 
-				//calculo do spare
+					//calculo do strike
 				} else {
-					resultado += arrayJogadas[indiceBola1] + arrayJogadas[indiceBola1 + 1] + arrayJogadas[indiceBola1 + 2];
+					resultado += arrayJogadas[indiceBola1]
+							+ arrayJogadas[indiceBola1 + 2]
+							+ arrayJogadas[indiceBola1 + 3];
 
 				}
-        	//jogada normal, frame completo
-        	} else {
-        		resultado += arrayJogadas[indiceBola1];
-        		resultado += arrayJogadas[indiceBola1+1];
 
-        	}
+				//detecta o spare
+			} else if (arrayJogadas[indiceBola1]
+					+ arrayJogadas[indiceBola1 + 1] == 10) {
 
-        //frame incompleto, nao consegue calcular
-        } else {
-        	return -1;
+				//se existe uma bola depois do spare
+				if (indiceBola1 + 2 >= qtdBolas) {
 
-        }
-    }
+					//caso nao consiga calcular
+					return -1;
 
-    return resultado;
+					//calculo do spare
+				} else {
+					resultado += arrayJogadas[indiceBola1]
+							+ arrayJogadas[indiceBola1 + 1]
+							+ arrayJogadas[indiceBola1 + 2];
+
+				}
+				//jogada normal, frame completo
+			} else {
+				resultado += arrayJogadas[indiceBola1];
+				resultado += arrayJogadas[indiceBola1 + 1];
+
+			}
+
+			//frame incompleto, nao consegue calcular
+		} else {
+			return -1;
+
+		}
+	}
+
+	return resultado;
 }
 
 int calcularResultado(char *linha) {
 	int arrayJogadas[21];
 
-	int tamanho = getJogadas(linha,arrayJogadas);
+	int tamanho = getJogadas(linha, arrayJogadas);
 
-    return calcularResultadoInteiros(arrayJogadas, tamanho);
+	return calcularResultadoInteiros(arrayJogadas, tamanho);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
