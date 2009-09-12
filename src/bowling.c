@@ -71,78 +71,56 @@ int calcularResultadoInteiros(int* arrayJogadas, int qtdBolas) {
 
 		int indiceBola1 = frame * 2;
 
+		int essaBola = arrayJogadas[indiceBola1];
 		int proximaBola = arrayJogadas[indiceBola1 + 1];
 		int proximaProximaBola = arrayJogadas[indiceBola1 + 2];
 
-		if(arrayJogadas[indiceBola1] == 10){
-			proximaBola = arrayJogadas[indiceBola1 + 2];
+		if (indiceBola1 + 1 >= qtdBolas) {
+			return -1;
+		}
+
+		if(essaBola == 10){
+
+			if (indiceBola1 + 2 >= qtdBolas) {
+				return -1;
+			} else {
+				proximaBola = arrayJogadas[indiceBola1 + 2];
+			}
+
 			if(proximaBola == 10){
-				proximaProximaBola = arrayJogadas[indiceBola1 + 4];
+
+				if (indiceBola1 + 4 >= qtdBolas) {
+					return -1;
+				} else {
+					proximaProximaBola = arrayJogadas[indiceBola1 + 4];
+				}
+
 			}else{
 				proximaProximaBola = arrayJogadas[indiceBola1 + 3];
 			}
+		} else  if (essaBola + proximaBola == 10 && indiceBola1+2 >= qtdBolas){
+			return -1;
 		}
 
 		//terceira bola do ultimo frame
 		if (frame == 9) {
-			return resultado + arrayJogadas[indiceBola1] + arrayJogadas[indiceBola1+1];
+			return resultado + essaBola + proximaBola;
 		}
 
 		//verifica se o frame esta completo
-		if ((indiceBola1 + 1 < qtdBolas)) {
+		if (essaBola == 10) {
+			resultado += essaBola + proximaBola + proximaProximaBola;
 
-			if (arrayJogadas[indiceBola1] == 10) {
+		} else if (essaBola	+ proximaBola == 10) {
+			//detecta o spare
+			resultado += 10	+ proximaProximaBola;
 
-				//se existe duas bola depois do strike
-				if (indiceBola1 + 3 >= qtdBolas) {
-
-					//caso nao consiga calcular
-					return -1;
-
-					//calculo do strike
-				} else {
-					if(arrayJogadas[indiceBola1+2]==10){
-						resultado += arrayJogadas[indiceBola1]
-							+ arrayJogadas[indiceBola1 + 2]
-							+ arrayJogadas[indiceBola1 + 4];
-					}
-					else{
-
-						resultado += arrayJogadas[indiceBola1]
-							+ arrayJogadas[indiceBola1 + 2]
-							+ arrayJogadas[indiceBola1 + 3];
-					}
-				}
-
-				//detecta o spare
-			} else if (arrayJogadas[indiceBola1]
-					+ arrayJogadas[indiceBola1 + 1] == 10) {
-
-				//se existe uma bola depois do spare
-				if (indiceBola1 + 2 >= qtdBolas) {
-
-					//caso nao consiga calcular
-					return -1;
-
-					//calculo do spare
-				} else {
-					resultado += arrayJogadas[indiceBola1]
-							+ arrayJogadas[indiceBola1 + 1]
-							+ arrayJogadas[indiceBola1 + 2];
-
-				}
-				//jogada normal, frame completo
-			} else {
-				resultado += arrayJogadas[indiceBola1];
-				resultado += arrayJogadas[indiceBola1 + 1];
-
-			}
-
-			//frame incompleto, nao consegue calcular
 		} else {
-			return -1;
+			//jogada normal, frame completo
+			resultado += essaBola + proximaBola;
 
 		}
+
 	}
 
 	return resultado;
