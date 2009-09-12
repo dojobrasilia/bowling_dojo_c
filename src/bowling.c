@@ -108,12 +108,15 @@ int calcularResultadoInteiros(int* arrayJogadas, int qtdBolas) {
 		int proximaBola = arrayJogadas[indiceBola1 + 1];
 		int proximaProximaBola = arrayJogadas[indiceBola1 + 2];
 
-		//terceira bola do ultimo frame
+		int isStrike = essaBola == 10;
+		int isSpare = essaBola + proximaBola == 10;
+
+		// ultimo frame
 		if (frame == 9) {
-			if(essaBola == 10 || essaBola + proximaBola == 10) {
-				return resultado + essaBola + arrayJogadas[indiceBola1 + 1] + arrayJogadas[indiceBola1 + 2];
+			if(isStrike || isSpare) {
+				return resultado + essaBola + proximaBola + proximaProximaBola;
 			}else{
-				return resultado + essaBola + arrayJogadas[indiceBola1 + 1];
+				return resultado + essaBola + proximaBola;
 			}
 		}
 
@@ -123,16 +126,13 @@ int calcularResultadoInteiros(int* arrayJogadas, int qtdBolas) {
 			return -1;
 		}
 
-		//verifica se o frame esta completo
-		if (essaBola == 10) {
+		if (isStrike) {
 			resultado += essaBola + proximaBola + proximaProximaBola;
 
-		} else if (essaBola	+ proximaBola == 10) {
-			//detecta o spare
+		} else if (isSpare) {
 			resultado += 10	+ proximaProximaBola;
 
 		} else {
-			//jogada normal, frame completo
 			resultado += essaBola + proximaBola;
 
 		}
