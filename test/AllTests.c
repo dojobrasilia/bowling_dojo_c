@@ -11,9 +11,7 @@ void RunAllTests(void) {
     CuString *output = CuStringNew();
     CuSuite* suite = CuSuiteNew();
 
-    //SUITE_ADD_TEST(suite, TestTest);
     SUITE_ADD_TEST(suite, TestLeLinha);
-    //SUITE_ADD_TEST(suite, TesteCalcularResultado);
     SUITE_ADD_TEST(suite, TesteCalcularUmaJogada);
     SUITE_ADD_TEST(suite, TesteCalcularDuasJogadas);
     SUITE_ADD_TEST(suite, TesteCalcularUmDezSemSacanagemDoStrike);
