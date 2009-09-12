@@ -159,6 +159,21 @@ void TesteCalcularUltimaJogadaComUmMonteDeSacanagem(CuTest *tc) {
 	jogada = "1: 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 9 1, 10 10 0";
 	//													  16   20  20
 	CuAssertIntEquals(tc,56,calcularResultado(jogada));
+
+	jogada = "1: 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 9 1, 8 2 0";
+	//												16   18  10
+	CuAssertIntEquals(tc,44,calcularResultado(jogada));
+}
+
+void TesteJogoQuasePerfeito(CuTest *tc) {
+	char* linha = "1: 5 5, 5 5, 5 5, 5 5, 5 5, 5 5, 5 5, 5 5, 5 5, 5 5 5";
+
+	CuAssertIntEquals(tc,150,calcularResultado(linha));
+}
+
+void TesteJogoPerfeito(CuTest *tc) {
+	char* linha = "1: 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 10 10";
+	CuAssertIntEquals(tc,300,calcularResultado(linha));
 }
 
 // TODO

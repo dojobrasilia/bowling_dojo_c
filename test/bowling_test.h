@@ -35,6 +35,8 @@ void TesteCalcularUltimaJogadaComStrikeEPontoNaProximaBola(CuTest *tc);
 void TesteCalcularUltimaJogadaComStrikeNoFrameNoveESpareFrameDezComStrikeNoFinal(CuTest *tc);
 void TesteAceitacaoVelho(CuTest *tc);
 void TesteCalcularUltimaJogadaComUmMonteDeSacanagem(CuTest *tc);
+void TesteJogoQuasePerfeito(CuTest *tc);
+void TesteJogoPerfeito(CuTest *tc);
 
 
 #endif /* BOWLING_TEST_H_ */
