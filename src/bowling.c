@@ -71,6 +71,18 @@ int calcularResultadoInteiros(int* arrayJogadas, int qtdBolas) {
 
 		int indiceBola1 = frame * 2;
 
+		int proximaBola = arrayJogadas[indiceBola1 + 1];
+		int proximaProximaBola = arrayJogadas[indiceBola1 + 2];
+
+		if(arrayJogadas[indiceBola1] == 10){
+			proximaBola = arrayJogadas[indiceBola1 + 2];
+			if(proximaBola == 10){
+				proximaProximaBola = arrayJogadas[indiceBola1 + 4];
+			}else{
+				proximaProximaBola = arrayJogadas[indiceBola1 + 3];
+			}
+		}
+
 		//terceira bola do ultimo frame
 		if (frame == 9) {
 			return resultado + arrayJogadas[indiceBola1] + arrayJogadas[indiceBola1+1];
