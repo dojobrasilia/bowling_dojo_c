@@ -144,9 +144,10 @@ void TesteCalcularUltimaJogadaComStrikeEPontoNaProximaBola(CuTest *tc) {
 	CuAssertIntEquals(tc,35,calcularResultado(jogada));
 }
 
-void TesteCalcularUltimaJogadaComStrikeEPontoNaProximaBola(CuTest *tc) {
+void TesteCalcularUltimaJogadaComStrikeNoFrameNoveESpareFrameDezComStrikeNoFinal(CuTest *tc) {
 	char* jogada = "1: 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 10, 1 9 10";
-	CuAssertIntEquals(tc,66,calcularResultado(jogada));
+	//													  16 20 20
+	CuAssertIntEquals(tc,56,calcularResultado(jogada));
 }
 
 // TODO

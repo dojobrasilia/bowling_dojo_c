@@ -32,6 +32,7 @@ void TesteCalcularStrikeTriplo(CuTest *tc);
 void TesteCalcularStrikeSpareStrike(CuTest *tc);
 void TesteCalcularUltimaJogada(CuTest *tc);
 void TesteCalcularUltimaJogadaComStrikeEPontoNaProximaBola(CuTest *tc);
+void TesteCalcularUltimaJogadaComStrikeNoFrameNoveESpareFrameDezComStrikeNoFinal(CuTest *tc);
 
 
 #endif /* BOWLING_TEST_H_ */

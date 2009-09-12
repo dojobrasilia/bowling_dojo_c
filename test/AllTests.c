@@ -36,6 +36,7 @@ void RunAllTests(void) {
     SUITE_ADD_TEST(suite, TesteCalcularStrikeSpareStrike);
     SUITE_ADD_TEST(suite, TesteCalcularUltimaJogada);
     SUITE_ADD_TEST(suite, TesteCalcularUltimaJogadaComStrikeEPontoNaProximaBola);
+    SUITE_ADD_TEST(suite, TesteCalcularUltimaJogadaComStrikeNoFrameNoveESpareFrameDezComStrikeNoFinal);
 
     CuSuiteRun(suite);
     CuSuiteSummary(suite, output);
