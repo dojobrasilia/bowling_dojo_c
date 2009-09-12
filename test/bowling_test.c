@@ -144,6 +144,11 @@ void TesteCalcularUltimaJogadaComStrikeEPontoNaProximaBola(CuTest *tc) {
 	CuAssertIntEquals(tc,35,calcularResultado(jogada));
 }
 
+void TesteCalcularUltimaJogadaComStrikeEPontoNaProximaBola(CuTest *tc) {
+	char* jogada = "1: 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 10, 1 9 10";
+	CuAssertIntEquals(tc,66,calcularResultado(jogada));
+}
+
 // TODO
 // - strike OK
 // - strikes encadeados OK
