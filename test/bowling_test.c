@@ -115,6 +115,12 @@ void TesteCalcularStrikeSimples(CuTest *tc) {
 	CuAssertIntEquals(tc,16,calcularResultado(jogada));
 }
 
+void TesteCalcularStrikeDuplo(CuTest *tc) {
+	char* jogada = "1: 10, 10, 1 2";
+	//					21 13  3
+	CuAssertIntEquals(tc,37,calcularResultado(jogada));
+}
+
 // TODO
 // - strike
 // - strikes encadeados

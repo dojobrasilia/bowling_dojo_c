@@ -89,10 +89,17 @@ int calcularResultadoInteiros(int* arrayJogadas, int qtdBolas) {
 
 					//calculo do strike
 				} else {
-					resultado += arrayJogadas[indiceBola1]
+					if(arrayJogadas[indiceBola1+2]==10){
+						resultado += arrayJogadas[indiceBola1]
+							+ arrayJogadas[indiceBola1 + 2]
+							+ arrayJogadas[indiceBola1 + 4];
+					}
+					else{
+
+						resultado += arrayJogadas[indiceBola1]
 							+ arrayJogadas[indiceBola1 + 2]
 							+ arrayJogadas[indiceBola1 + 3];
-
+					}
 				}
 
 				//detecta o spare

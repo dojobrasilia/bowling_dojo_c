@@ -31,6 +31,7 @@ void RunAllTests(void) {
     SUITE_ADD_TEST(suite, TesteCalcularStrikeIncompleto);
     SUITE_ADD_TEST(suite, TesteCalcularStrikeIncompleto2);
     SUITE_ADD_TEST(suite, TesteCalcularStrikeSimples);
+    SUITE_ADD_TEST(suite, TesteCalcularStrikeDuplo);
 
     CuSuiteRun(suite);
     CuSuiteSummary(suite, output);
