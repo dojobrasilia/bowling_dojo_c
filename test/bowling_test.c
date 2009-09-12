@@ -16,10 +16,6 @@ void TestLeLinha(CuTest *tc){
 	CuAssertStrEquals(tc, "1: 1 3, 10, 2 1, 1 1, 9 1, 8 0, 2 2, 2 2, 2 2, 2 2", linha);
 }
 
-//void TesteCalcularResultado(CuTest *tc) {
-//	char* linha = "1: 1 3, 10, 2 1, 1 1, 9 1, 8 0, 2 2, 2 2, 2 2, 2 2";
-//	CuAssertIntEquals(tc,64,calcularResultado(linha));
-//}
 
 void TesteCalcularUmaJogada(CuTest *tc) {
 	char* jogada = "1: 1 3";
@@ -146,8 +142,19 @@ void TesteCalcularUltimaJogadaComStrikeEPontoNaProximaBola(CuTest *tc) {
 
 void TesteCalcularUltimaJogadaComStrikeNoFrameNoveESpareFrameDezComStrikeNoFinal(CuTest *tc) {
 	char* jogada = "1: 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 10, 1 9 10";
-	//													  16 20 20
+	//													  16  20 20
 	CuAssertIntEquals(tc,56,calcularResultado(jogada));
+}
+
+void TesteAceitacaoVelho(CuTest *tc) {
+	char* linha = "1: 1 3, 10, 2 1, 1 1, 9 1, 8 0, 2 2, 2 2, 2 2, 2 2";
+	CuAssertIntEquals(tc,64,calcularResultado(linha));
+}
+
+void TesteCalcularUltimaJogadaComUmMonteDeSacanagem(CuTest *tc) {
+	char* jogada = "1: 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 9 1, 10 10 10";
+	//													  16   20  30
+	CuAssertIntEquals(tc,66,calcularResultado(jogada));
 }
 
 // TODO

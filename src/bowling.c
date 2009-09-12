@@ -108,12 +108,6 @@ int calcularResultadoInteiros(int* arrayJogadas, int qtdBolas) {
 		int proximaBola = arrayJogadas[indiceBola1 + 1];
 		int proximaProximaBola = arrayJogadas[indiceBola1 + 2];
 
-		if (!isPossivelCalcular(arrayJogadas, indiceBola1, qtdBolas, essaBola,
-				&proximaBola, &proximaProximaBola)) {
-
-			return -1;
-		}
-
 		//terceira bola do ultimo frame
 		if (frame == 9) {
 			if(essaBola == 10 || essaBola + proximaBola == 10) {
@@ -121,6 +115,12 @@ int calcularResultadoInteiros(int* arrayJogadas, int qtdBolas) {
 			}else{
 				return resultado + essaBola + arrayJogadas[indiceBola1 + 1];
 			}
+		}
+
+		if (!isPossivelCalcular(arrayJogadas, indiceBola1, qtdBolas, essaBola,
+				&proximaBola, &proximaProximaBola)) {
+
+			return -1;
 		}
 
 		//verifica se o frame esta completo
