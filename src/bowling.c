@@ -51,7 +51,7 @@ int getJogadas(char* linha, int *arrayJogadas) {
 			jogadaI = atoi(jogada);
 
 			arrayJogadas[qteJogadas++] = jogadaI;
-			if (jogadaI == 10 && qteJogadas <= 20) {
+			if (jogadaI == 10 && qteJogadas < 19) {
 				// completa com zeros pra ficar sempre 2 bolas por frame.
 				arrayJogadas[qteJogadas++] = 0;
 			}
@@ -90,6 +90,7 @@ int isPossivelCalcular(int *arrayJogadas, int indiceBola1, int qtdBolas, int ess
 	} else  if (essaBola + *proximaBola == 10 && indiceBola1+2 >= qtdBolas){
 		return 0;
 	}
+
 	return 1;
 }
 
@@ -108,14 +109,18 @@ int calcularResultadoInteiros(int* arrayJogadas, int qtdBolas) {
 		int proximaProximaBola = arrayJogadas[indiceBola1 + 2];
 
 		if (!isPossivelCalcular(arrayJogadas, indiceBola1, qtdBolas, essaBola,
-								&proximaBola, &proximaProximaBola)) {
+				&proximaBola, &proximaProximaBola)) {
 
 			return -1;
 		}
 
 		//terceira bola do ultimo frame
 		if (frame == 9) {
-			return resultado + essaBola + proximaBola;
+			if(essaBola == 10 || essaBola + proximaBola == 10) {
+				return resultado + essaBola + arrayJogadas[indiceBola1 + 1] + arrayJogadas[indiceBola1 + 2];
+			}else{
+				return resultado + essaBola + arrayJogadas[indiceBola1 + 1];
+			}
 		}
 
 		//verifica se o frame esta completo

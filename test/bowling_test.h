@@ -28,4 +28,10 @@ void TesteCalcularStrikeIncompleto(CuTest *tc);
 void TesteCalcularStrikeIncompleto2(CuTest *tc);
 void TesteCalcularStrikeSimples(CuTest *tc);
 void TesteCalcularStrikeDuplo(CuTest *tc);
+void TesteCalcularStrikeTriplo(CuTest *tc);
+void TesteCalcularStrikeSpareStrike(CuTest *tc);
+void TesteCalcularUltimaJogada(CuTest *tc);
+void TesteCalcularUltimaJogadaComStrikeEPontoNaProximaBola(CuTest *tc);
+
+
 #endif /* BOWLING_TEST_H_ */

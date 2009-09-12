@@ -121,9 +121,32 @@ void TesteCalcularStrikeDuplo(CuTest *tc) {
 	CuAssertIntEquals(tc,37,calcularResultado(jogada));
 }
 
+void TesteCalcularStrikeTriplo(CuTest *tc) {
+	char* jogada = "1: 10, 10, 10, 1 2";
+	//			 	   30  21  13   3
+	CuAssertIntEquals(tc,67,calcularResultado(jogada));
+}
+
+void TesteCalcularStrikeSpareStrike(CuTest *tc) {
+	char* jogada = "1: 10, 4 6, 10, 1 2";
+	//			 	   20  20   13   3
+	CuAssertIntEquals(tc,56,calcularResultado(jogada));
+}
+
+void TesteCalcularUltimaJogada(CuTest *tc) {
+	char* jogada = "1: 10, 4 6, 10, 1 2, 1 1, 1 1, 1 1, 1 1, 1 1, 0 0";
+	//			 	   20  20   13   3
+	CuAssertIntEquals(tc,66,calcularResultado(jogada));
+}
+
+void TesteCalcularUltimaJogadaComStrikeEPontoNaProximaBola(CuTest *tc) {
+	char* jogada = "1: 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 10 2 5";
+	CuAssertIntEquals(tc,35,calcularResultado(jogada));
+}
+
 // TODO
-// - strike
-// - strikes encadeados
+// - strike OK
+// - strikes encadeados OK
 // - ultimo frame de 3 bolas
 // 		- completa strikes com zeros no œltimo frame?
 // - jogo perfeito
