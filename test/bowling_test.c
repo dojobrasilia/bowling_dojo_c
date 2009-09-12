@@ -155,6 +155,10 @@ void TesteCalcularUltimaJogadaComUmMonteDeSacanagem(CuTest *tc) {
 	char* jogada = "1: 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 9 1, 10 10 10";
 	//													  16   20  30
 	CuAssertIntEquals(tc,66,calcularResultado(jogada));
+
+	jogada = "1: 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 1 1, 9 1, 10 10 0";
+	//													  16   20  20
+	CuAssertIntEquals(tc,56,calcularResultado(jogada));
 }
 
 // TODO
